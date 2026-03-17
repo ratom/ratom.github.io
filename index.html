@@ -196,12 +196,12 @@
       <h1>Rabin Dulal</h1>
       <p class="hero-role">PhD Researcher &nbsp;·&nbsp; Deep Learning &amp; Computer Vision &nbsp;·&nbsp; LLM &amp; Agentic AI &nbsp;·&nbsp; Data Engineering</p>
       <div class="hero-contact">
-        <span>✉ <a href="/cdn-cgi/l/email-protection#3357465f525f52475c5e73545e525a5f1d505c5e"><span class="__cf_email__" data-cfemail="92f6e7fef3fef3e6fdffd2f5fff3fbfebcf1fdff">[email&#160;protected]</span></a></span>
+        <span>✉ <a href="mailto:dulalatom@gmail.com">dulalatom@gmail.com</a></span>
         <span>📞 0450 399 072</span>
         <span>📍 Wagga Wagga, NSW 2650</span>
       </div>
       <div class="hero-btns">
-        <a href="/cdn-cgi/l/email-protection#81e5f4ede0ede0f5eeecc1e6ece0e8edafe2eeec" class="btn btn-primary">✉ Contact Me</a>
+        <a href="mailto:dulalatom@gmail.com" class="btn btn-primary">✉ Contact Me</a>
         <a href="https://www.youtube.com/watch?v=vu7hKiKJ2AE" target="_blank" class="btn btn-outline">▶ Demo Video</a>
         <a href="https://www.youtube.com/watch?v=cnus9gynUJc&t=4s" target="_blank" class="btn btn-outline">▶ Presentation</a>
         <a href="https://2mce.org/podcast/changing-the-world-with-csu-researchers-rabin-dulal-and-bron-williams/" target="_blank" class="btn btn-outline">🎙 Interview</a>
@@ -244,8 +244,6 @@
         <span class="itag">Transformers</span>
       </div>
     </div>
-
-
   </aside>
 
   <!-- MAIN CONTENT -->
@@ -594,10 +592,10 @@
       <h2 class="sec-heading">Contact</h2>
       <p style="font-size:0.92rem;color:#555;margin-bottom:1.2rem;">I am open to research collaborations, industry partnerships, and academic opportunities. Feel free to reach out.</p>
       <table style="font-size:0.88rem;border-collapse:collapse;">
-        <tr><td style="padding:0.4rem 1.4rem 0.4rem 0;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.08em;vertical-align:top;">Email</td><td><a href="/cdn-cgi/l/email-protection#d9bdacb5b8b5b8adb6b499beb4b8b0b5f7bab6b4"><span class="__cf_email__" data-cfemail="2743524b464b4653484a67404a464e4b0944484a">[email&#160;protected]</span></a></td></tr>
+        <tr><td style="padding:0.4rem 1.4rem 0.4rem 0;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.08em;vertical-align:top;">Email</td><td><a href="mailto:dulalatom@gmail.com">dulalatom@gmail.com</a></td></tr>
         <tr><td style="padding:0.4rem 1.4rem 0.4rem 0;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.08em;vertical-align:top;">Phone</td><td>0450 399 072</td></tr>
         <tr><td style="padding:0.4rem 1.4rem 0.4rem 0;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.08em;vertical-align:top;">Location</td><td>Wagga Wagga, NSW 2650, Australia</td></tr>
-        <tr><td style="padding:0.4rem 1.4rem 0.4rem 0;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.08em;vertical-align:top;">Supervisor</td><td>Professor Lihong Zheng — <a href="/cdn-cgi/l/email-protection#25495f4d404b42654656500b4041500b4450"><span class="__cf_email__" data-cfemail="365a4c5e5358517655454318535243185743">[email&#160;protected]</span></a></td></tr>
+        <tr><td style="padding:0.4rem 1.4rem 0.4rem 0;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.08em;vertical-align:top;">Supervisor</td><td>Professor Lihong Zheng — <a href="mailto:lzheng@csu.edu.au">lzheng@csu.edu.au</a></td></tr>
       </table>
     </section>
 
@@ -610,11 +608,30 @@
   <p style="margin-top:0.4rem;opacity:0.5;">© 2025 &nbsp;·&nbsp; Built with HTML/CSS &nbsp;·&nbsp; Hosted on GitHub Pages</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function filterPubs(type, btn) {
     document.querySelectorAll('.filt-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     document.querySelectorAll('.pub-entry').forEach(el => {
       if (type === 'all' || el.dataset.type === type) {
         el.classList.remove('hidden');
-      } else
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+  }
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--navy)' : '';
+      a.style.fontWeight = a.getAttribute('href') === '#' + cur ? '600' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
