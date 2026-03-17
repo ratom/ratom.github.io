@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Rabin Dulal — PhD Researcher in Deep Learning, Computer Vision, LLM and Agentic AI at Charles Sturt University, Australia."/>
+  <title>Rabin Dulal | PhD Researcher · AI Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:        #f8f6f1;
+      --bg2:       #f0ede6;
+      --surface:   #ffffff;
+      --border:    #e2ddd6;
+      --border2:   #cdc8bf;
+      --navy:      #1a2744;
+      --navy2:     #243358;
+      --accent:    #c0392b;
+      --accent2:   #e74c3c;
+      --gold:      #b7860b;
+      --gold-bg:   #fdf8ec;
+      --text:      #2c2c2c;
+      --muted:     #6b6560;
+      --light:     #9b948d;
+      --link:      #1a4f8a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; background: var(--bg); color: var(--text); line-height: 1.75; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(248,246,241,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .nav-brand { font-family: 'Lora', serif; font-weight: 700; font-size: 1.05rem; color: var(--navy); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--navy); }
+
+    /* HERO */
+    .hero { background: var(--navy); color: #fff; padding: 5rem 2rem 4rem; position: relative; overflow: hidden; }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(192,57,43,0.18) 0%, transparent 70%),
+        repeating-linear-gradient(-45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 28px);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
+    .hero-affil { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+    .hero h1 { font-family: 'Lora', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+    .hero-role { font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 1.8rem; font-weight: 300; }
+    .hero-contact { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; font-size: 0.83rem; color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
+    .hero-contact a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    .hero-contact a:hover { color: #fff; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 500; font-family: 'IBM Plex Mono', monospace; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent2); text-decoration: none; }
+    .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: #fff; text-decoration: none; }
+    .hero-photo { width: 160px; height: 160px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.15); background: linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
+    .hero-photo svg { opacity: 0.3; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+    /* AWARD BAR */
+    .award-bar { background: var(--gold-bg); border-top: 1px solid #e8d99a; border-bottom: 1px solid #e8d99a; }
+    .award-bar-inner { max-width: 1080px; margin: 0 auto; padding: 0.75rem 2rem; display: flex; align-items: center; gap: 0.8rem; font-size: 0.85rem; color: var(--gold); }
+    .award-bar strong { font-weight: 600; }
+
+    /* PAGE BODY */
+    .page-body { max-width: 1080px; margin: 0 auto; padding: 3rem 2rem 5rem; display: grid; grid-template-columns: 260px 1fr; gap: 3rem; align-items: start; }
+
+    /* SIDEBAR */
+    .sidebar { position: sticky; top: 72px; }
+    .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.4rem; margin-bottom: 1.2rem; }
+    .sidebar-title { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--light); margin-bottom: 0.9rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+    .sidebar-links { list-style: none; }
+    .sidebar-links li { padding: 0.3rem 0; border-bottom: 1px solid var(--bg2); font-size: 0.84rem; }
+    .sidebar-links li:last-child { border-bottom: none; }
+    .interest-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .itag { background: var(--bg2); border: 1px solid var(--border); color: var(--muted); font-size: 0.74rem; padding: 0.2rem 0.55rem; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; }
+
+    /* MAIN */
+    section { margin-bottom: 3.5rem; }
+    .sec-heading { font-family: 'Lora', serif; font-size: 1.35rem; font-weight: 700; color: var(--navy); margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 2px solid var(--navy); display: flex; align-items: center; gap: 0.6rem; }
+    .about-text { font-size: 0.93rem; color: #444; margin-bottom: 0.8rem; }
+
+    /* NEWS */
+    .news-list { list-style: none; }
+    .news-item { display: grid; grid-template-columns: 90px 1fr; gap: 0.8rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 0.87rem; }
+    .news-item:last-child { border-bottom: none; }
+    .news-date { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--light); padding-top: 0.15rem; }
+    .badge { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.63rem; padding: 0.12rem 0.45rem; border-radius: 3px; font-weight: 500; margin-left: 0.3rem; vertical-align: middle; }
+    .badge-award { background: #fff8e0; color: var(--gold); border: 1px solid #f0d980; }
+    .badge-pub   { background: #e8f0fe; color: #1a5cbb; border: 1px solid #b3c9f5; }
+    .badge-grant { background: #e8f8ed; color: #1a7a3a; border: 1px solid #9dd9b0; }
+    .badge-conf  { background: #fdecea; color: #b02020; border: 1px solid #f5b0aa; }
+
+    /* PUBLICATIONS */
+    .pub-filter { display: flex; gap: 0.4rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+    .filt-btn { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; padding: 0.3rem 0.8rem; border-radius: 3px; border: 1px solid var(--border2); background: var(--surface); color: var(--muted); cursor: pointer; transition: all 0.15s; }
+    .filt-btn.active, .filt-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .pub-entry { padding: 1.1rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 36px 1fr; gap: 0.6rem; }
+    .pub-entry:last-child { border-bottom: none; }
+    .pub-num { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--light); padding-top: 0.25rem; text-align: right; }
+    .pub-title { font-weight: 500; font-size: 0.9rem; color: var(--navy); line-height: 1.45; margin-bottom: 0.25rem; }
+    .pub-authors { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.2rem; }
+    .pub-authors strong { color: var(--navy); }
+    .pub-venue { font-size: 0.8rem; font-style: italic; color: var(--light); }
+    .pub-venue .year { font-style: normal; font-family: 'IBM Plex Mono', monospace; }
+
+    /* EXPERIENCE */
+    .exp-entry { display: grid; grid-template-columns: 110px 1fr; gap: 1rem 1.4rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
+    .exp-entry:last-child { border-bottom: none; }
+    .exp-period { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--light); padding-top: 0.25rem; line-height: 1.4; }
+    .exp-title { font-family: 'Lora', serif; font-weight: 600; font-size: 0.98rem; color: var(--navy); margin-bottom: 0.15rem; }
+    .exp-org { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .exp-desc { font-size: 0.86rem; color: #555; }
+    .exp-desc ul { padding-left: 1.2rem; margin-top: 0.4rem; }
+    .exp-desc li { margin-bottom: 0.25rem; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+    .exp-tag { background: var(--bg2); border: 1px solid var(--border); color: var(--muted); font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; }
+
+    /* EDUCATION */
+    .edu-entry { padding: 1rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 110px 1fr; gap: 0.5rem 1.4rem; }
+    .edu-entry:last-child { border-bottom: none; }
+    .edu-period { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--light); padding-top: 0.2rem; }
+    .edu-degree { font-weight: 600; font-size: 0.92rem; color: var(--navy); }
+    .edu-inst { font-size: 0.83rem; color: var(--muted); }
+    .edu-thesis { font-size: 0.8rem; font-style: italic; color: var(--light); margin-top: 0.2rem; }
+
+    /* PHD CARDS */
+    .phd-card { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 0 6px 6px 0; padding: 1.2rem 1.4rem; margin-bottom: 1rem; }
+    .phd-card-title { font-family: 'Lora', serif; font-weight: 700; font-size: 0.98rem; color: var(--navy); margin-bottom: 0.3rem; }
+    .phd-card-sub { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .phd-card-body { font-size: 0.86rem; color: #555; }
+
+    /* AWARDS */
+    .awards-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+    .awards-table tr { border-bottom: 1px solid var(--border); }
+    .awards-table tr:last-child { border-bottom: none; }
+    .awards-table td { padding: 0.65rem 0.4rem; vertical-align: top; }
+    .aw-year { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--light); width: 55px; }
+    .aw-amount { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--navy); text-align: right; white-space: nowrap; }
+
+    /* SKILLS */
+    .skills-table { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .skill-row { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.8rem 1rem; }
+    .skill-cat { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.25rem; }
+    .skill-vals { font-size: 0.82rem; color: var(--muted); }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 2.5rem 2rem; font-size: 0.8rem; font-family: 'IBM Plex Mono', monospace; }
+    footer a { color: rgba(255,255,255,0.7); }
+
+    .hidden { display: none !important; }
+
+    /* RESPONSIVE */
+    @media (max-width: 780px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo { display: none; }
+      .page-body { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .exp-entry, .edu-entry, .news-item { grid-template-columns: 1fr; }
+      .skills-table { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">Rabin Dulal</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#phd">Research</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-affil">Charles Sturt University · Wagga Wagga, NSW · Australia</div>
+      <h1>Rabin Dulal</h1>
+      <p class="hero-role">PhD Researcher &nbsp;·&nbsp; Deep Learning &amp; Computer Vision &nbsp;·&nbsp; LLM &amp; Agentic AI &nbsp;·&nbsp; Data Engineering</p>
+      <div class="hero-contact">
+        <span>✉ <a href="/cdn-cgi/l/email-protection#3357465f525f52475c5e73545e525a5f1d505c5e"><span class="__cf_email__" data-cfemail="92f6e7fef3fef3e6fdffd2f5fff3fbfebcf1fdff">[email&#160;protected]</span></a></span>
+        <span>📞 0450 399 072</span>
+        <span>📍 Wagga Wagga, NSW 2650</span>
+      </div>
+      <div class="hero-btns">
+        <a href="/cdn-cgi/l/email-protection#81e5f4ede0ede0f5eeecc1e6ece0e8edafe2eeec" class="btn btn-primary">✉ Contact Me</a>
+        <a href="https://www.youtube.com/watch?v=vu7hKiKJ2AE" target="_blank" class="btn btn-outline">▶ Demo Video</a>
+        <a href="https://www.youtube.com/watch?v=cnus9gynUJc&t=4s" target="_blank" class="btn btn-outline">▶ Presentation</a>
+        <a href="https://2mce.org/podcast/changing-the-world-with-csu-researchers-rabin-dulal-and-bron-williams/" target="_blank" class="btn btn-outline">🎙 Interview</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <!-- TO ADD YOUR PHOTO: replace this SVG with <img src="photo.jpg" alt="Rabin Dulal"> -->
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="30" r="18" fill="white"/><ellipse cx="40" cy="72" rx="28" ry="18" fill="white"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- AWARD BAR -->
+<div class="award-bar">
+  <div class="award-bar-inner">
+    <span>🏆</span>
+    <span><strong>Best Student Paper Award — AJCAI 2025</strong> &nbsp;·&nbsp; Australasian Joint Conference on Artificial Intelligence, Australian National University, Canberra, Australia</span>
+  </div>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">Research Interests</div>
+      <div class="interest-tags">
+        <span class="itag">Deep Learning</span>
+        <span class="itag">Computer Vision</span>
+        <span class="itag">Object Detection</span>
+        <span class="itag">LLM</span>
+        <span class="itag">Agentic AI</span>
+        <span class="itag">RAG</span>
+        <span class="itag">Few-Shot Learning</span>
+        <span class="itag">Meta-Learning</span>
+        <span class="itag">Data Engineering</span>
+        <span class="itag">Medical AI</span>
+        <span class="itag">AgriTech AI</span>
+        <span class="itag">Transformers</span>
+      </div>
+    </div>
+
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="sec-heading">About Me</h2>
+      <p class="about-text">I am a PhD graduate at <strong>Charles Sturt University (CSU)</strong>, Australia, specialising in deep learning, computer vision, and large language models. My research focuses on <strong>cattle identification using muzzle biometrics</strong>, with contributions spanning novel neural architectures, few-shot learning, and scalable data pipelines for agricultural and health applications.</p>
+      <p class="about-text">I am currently working as a <strong>Research Associate at CSU</strong>, leading applied AI projects in wound tissue segmentation, 3D cattle reconstruction, and workplace bullying detection using LLMs with agentic AI frameworks. I also mentor PhD students and serve on a PhD supervisory team.</p>
+      <p class="about-text">My work sits at the intersection of <strong>academic research and real-world deployment</strong> — I have hands-on experience building production ML pipelines on cloud platforms, deploying deep learning models, and collaborating with industry partners including Integrity Systems and the Australian Computer Society. Code is hosted in private repositories due to ongoing IP agreements; demonstrations are available on request.</p>
+    </section>
+
+    <!-- NEWS -->
+    <section id="news">
+      <h2 class="sec-heading">News</h2>
+      <ul class="news-list">
+        <li class="news-item">
+          <span class="news-date">Nov 2025</span>
+          <span><strong>Best Student Paper Award</strong> at AJCAI 2025 (AUD 1,000) — <em>"When language models guide vision: Grounding DINO for cattle muzzle detection"</em> <span class="badge badge-award">🏆 Award</span></span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">Nov 2025</span>
+          <span>Paper presented at <strong>AJCAI 2025</strong>, Singapore. <span class="badge badge-conf">Conference</span></span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2025</span>
+          <span>Journal paper <em>"MHAFF: Multihead attention feature fusion of CNN and transformer for cattle identification"</em> published in <strong>IEEE Transactions on AgriFood Electronics</strong>. <span class="badge badge-pub">Journal</span></span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2025</span>
+          <span>Received <strong>AgInnovation Program Grant</strong> (AUD 1,689) and <strong>Equity Support Grant</strong> (AUD 1,000). <span class="badge badge-grant">Grant</span></span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2025</span>
+          <span>Appointed <strong>Research Associate</strong> at Charles Sturt University, working on health and agriculture AI projects.</span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2024</span>
+          <span><strong>Digital Health Nepal Innovative Research Grant</strong> awarded (NRs 299,500). <span class="badge badge-grant">Grant</span></span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2023</span>
+          <span>Industry project report <em>"TRAKKA: Making Data Flow"</em> published with <strong>Food Agility CRC</strong>.</span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2023</span>
+          <span><strong>Gulbali Accelerated Publication Scheme Grant</strong> awarded (AUD 8,000). <span class="badge badge-grant">Grant</span></span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <h2 class="sec-heading">Publications</h2>
+      <div class="pub-filter">
+        <button class="filt-btn active" onclick="filterPubs('all',this)">All</button>
+        <button class="filt-btn" onclick="filterPubs('journal',this)">Journals</button>
+        <button class="filt-btn" onclick="filterPubs('conference',this)">Conferences</button>
+        <button class="filt-btn" onclick="filterPubs('thesis',this)">Thesis &amp; Reports</button>
+      </div>
+      <div id="pub-list">
+
+        <div class="pub-entry" data-type="journal">
+          <span class="pub-num">J1</span>
+          <div>
+            <div class="pub-title">WoundFormer: Multi-Scale Spatial Feature Fusion for Multi-Class Wound Tissue Segmentation</div>
+            <div class="pub-authors"><strong>R. Dulal</strong>, M. A. Kabir, S. Ahmed</div>
+            <div class="pub-venue">Under Review, <span class="year">2026</span></div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="journal">
+          <span class="pub-num">J2</span>
+          <div>
+            <div class="pub-title">Agreement-Driven Multi-View 3D Reconstruction for Live Cattle Weight Estimation</div>
+            <div class="pub-authors"><strong>R. Dulal</strong>, W. Jia, L. Zheng, J. Quinn</div>
+            <div class="pub-venue">Under Review, <span class="year">2026</span></div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="journal">
+          <span class="pub-num">J3</span>
+          <div>
+            <div class="pub-title">CCoMAML: A few-shot learning framework for cattle identification using cooperative model-agnostic meta-learning</div>
+            <div class="pub-authors"><strong>R. Dulal</strong>, L. Zheng, M. A. Kabir</div>
+            <div class="pub-venue"><em>IEEE Transactions on Biometrics, Behavior, and Identity Science</em>, Revision 1, <span class="year">2026</span></div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="journal">
+          <span class="pub-num">J4</span>
+          <div>
+            <div class="pub-title">MHAFF: Multihead attention feature fusion of CNN and transformer for cattle identification</div>
+            <div class="pub-authors"><strong>R. Dulal</strong>, L. Zheng, M. A. Kabir</div>
+            <div class="pub-venue"><em>IEEE Transactions on AgriFood Electronics</em>, <span class="year">2025</span></div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="journal">
+          <span class="pub-num">J5</span>
+          <div>
+            <div class="pub-title">Brain tumor identification using improved YOLOv8</div>
+            <div class="pub-authors"><strong>R. Dulal</strong>, R. Dulal</div>
+            <div class="pub-venue"><em>International Journal of Complexity in Applied Science and Technology</em>, <span class="year">2025</span></div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="journal">
+          <span class="pub-num">J6</span>
+          <div>
+            <div class="pub-title">Discrimination of vineyard origin and grape cultivars using rapid mass spectrometry and machine learning</div>
+            <div class="pub-authors">K. K. Saha, <strong>R. Dulal</strong>, L. Schmidtke, L. Zheng, X. Huang, A. Clark</div>
+            <div class="pub-venue"><em>Smart Agricultural Technology</em>, <span class="year">2025</span></div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="conference">
+          <span class="pub-num">C1</span>
+          <div>
+            <div class="pub-title">When language models guide vision: Grounding DINO for cattle muzzle detection <span class="badge badge-award">🏆 Best Student Paper</span></div>
+            <div class="pub-authors"><strong>R. Dulal</strong>, L. Zheng, M. A. Kabir</div>
+            <div class="pub-venue"><em>AJCAI</em>, Singapore, <span class="year">Nov 2025</span>, pp. 161–173</div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="conference">
+          <span class="pub-num">C2</span>
+          <div>
+            <div class="pub-title">Automatic cattle identification using YOLOv5 and mosaic augmentation: A comparative analysis</div>
+            <div class="pub-authors"><strong>R. Dulal</strong>, L. Zheng, M. A. Kabir, S. McGrath, J. Medway, D. Swain, W. Swain</div>
+            <div class="pub-venue"><em>DICTA</em>, <span class="year">Nov 2022</span>, pp. 1–8</div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="conference">
+          <span class="pub-num">C3</span>
+          <div>
+            <div class="pub-title">Big data and Google file system</div>
+            <div class="pub-authors"><strong>R. Dulal</strong></div>
+            <div class="pub-venue"><em>8th National Students' Conf. on IT</em>, Kathmandu, Nepal, <span class="year">2016</span></div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="conference">
+          <span class="pub-num">C4</span>
+          <div>
+            <div class="pub-title">Machine That Acts Like Human</div>
+            <div class="pub-authors"><strong>R. Dulal</strong></div>
+            <div class="pub-venue"><em>8th National Students' Conf. on IT</em>, Kathmandu, Nepal, <span class="year">2016</span></div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="conference">
+          <span class="pub-num">C5</span>
+          <div>
+            <div class="pub-title">Snort for the secured network</div>
+            <div class="pub-authors"><strong>R. Dulal</strong>, E. Neupane</div>
+            <div class="pub-venue"><em>7th National Students' Conf. on IT</em>, Kathmandu, Nepal, <span class="year">2013</span></div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="thesis">
+          <span class="pub-num">T1</span>
+          <div>
+            <div class="pub-title">Deep Learning for Cattle Identification Using Muzzle Patterns</div>
+            <div class="pub-authors"><strong>R. Dulal</strong></div>
+            <div class="pub-venue"><em>PhD Thesis</em>, Charles Sturt University, <span class="year">2026</span></div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="thesis">
+          <span class="pub-num">T2</span>
+          <div>
+            <div class="pub-title">An Adaptive Synthetic CNN Model to Detect Credit Card Frauds Using Deep Learning</div>
+            <div class="pub-authors"><strong>R. Dulal</strong></div>
+            <div class="pub-venue"><em>Master's Thesis</em>, Charles Sturt University, <span class="year">2019</span></div>
+          </div>
+        </div>
+
+        <div class="pub-entry" data-type="thesis">
+          <span class="pub-num">I1</span>
+          <div>
+            <div class="pub-title">TRAKKA: Making Data Flow</div>
+            <div class="pub-authors">D. Swain, W. Swain, J. Medway, L. Zheng, A. Kabir, S. McGrath, M. Habib, <strong>R. Dulal</strong></div>
+            <div class="pub-venue"><em>Food Agility CRC — Industry Project Report</em>, <span class="year">2023</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2 class="sec-heading">Experience</h2>
+
+      <div class="exp-entry">
+        <div class="exp-period">2025<br>Present</div>
+        <div>
+          <div class="exp-title">Research Associate</div>
+          <div class="exp-org">Charles Sturt University · Wagga Wagga, NSW</div>
+          <div class="exp-desc">
+            <ul>
+              <li>Leading applied ML/DL research across health and agriculture domains using text, image, 3D, and hyperspectral data.</li>
+              <li>Developing an agentic AI framework with a fine-tuned LLM and RAG pipeline for workplace bullying detection from long-form email documents (PDF).</li>
+              <li>State-of-the-art multi-class wound tissue segmentation research.</li>
+              <li>Mentoring PhD students; member of one PhD supervisory team.</li>
+            </ul>
+          </div>
+          <div class="exp-tags"><span class="exp-tag">LLM</span><span class="exp-tag">RAG</span><span class="exp-tag">Agentic AI</span><span class="exp-tag">Segmentation</span><span class="exp-tag">3D Data</span><span class="exp-tag">Hyperspectral</span></div>
+        </div>
+      </div>
+
+      <div class="exp-entry">
+        <div class="exp-period">2022<br>2023</div>
+        <div>
+          <div class="exp-title">Deep Learning Engineer — TRAKKA Project</div>
+          <div class="exp-org">TerraCipher · Remote (Industry PhD Partnership)</div>
+          <div class="exp-desc">
+            <ul>
+              <li>Built YOLOv7-based cattle identification system from muzzle biometrics, achieving <strong>96.58% accuracy</strong> on CSU farm data.</li>
+              <li>Designed automated cloud data pipeline on Vertex AI; reduced manual annotation effort by <strong>98%</strong>.</li>
+              <li>Integrated Apache Airflow for ETL orchestration; containerised with Docker.</li>
+              <li>Collaborated with Integrity Systems to meet industry data management standards.</li>
+            </ul>
+          </div>
+          <div class="exp-tags"><span class="exp-tag">YOLOv7</span><span class="exp-tag">Vertex AI</span><span class="exp-tag">Apache Airflow</span><span class="exp-tag">Docker</span><span class="exp-tag">PyTorch</span><span class="exp-tag">TensorFlow</span></div>
+        </div>
+      </div>
+
+      <div class="exp-entry">
+        <div class="exp-period">2020<br>2021</div>
+        <div>
+          <div class="exp-title">Data Engineer Intern</div>
+          <div class="exp-org">Australian Computer Society (Work Integrated Learning) · Remote</div>
+          <div class="exp-desc">Designed MySQL databases for a social awareness web application; built ETL pipelines and data models ensuring security and compliance.</div>
+          <div class="exp-tags"><span class="exp-tag">MySQL</span><span class="exp-tag">ETL</span><span class="exp-tag">SQL</span><span class="exp-tag">NoSQL</span></div>
+        </div>
+      </div>
+
+      <div class="exp-entry">
+        <div class="exp-period">2017<br>2019</div>
+        <div>
+          <div class="exp-title">Teaching Assistant</div>
+          <div class="exp-org">Charles Sturt University · Sydney, NSW</div>
+          <div class="exp-desc">Mentored students in DBMS, SQL, normalisation and data modelling; facilitated PASS sessions, workshops, and tutorials.</div>
+          <div class="exp-tags"><span class="exp-tag">DBMS</span><span class="exp-tag">SQL</span><span class="exp-tag">Tutoring</span></div>
+        </div>
+      </div>
+
+      <div class="exp-entry">
+        <div class="exp-period">2016<br>2017</div>
+        <div>
+          <div class="exp-title">Lecturer</div>
+          <div class="exp-org">Pokhara University · Nepal</div>
+          <div class="exp-desc">Delivered lectures in DBMS, OOP in Java, Web Technologies, C/C++ and Python. Supervised undergraduate final-year projects; contributed to curriculum development.</div>
+          <div class="exp-tags"><span class="exp-tag">Teaching</span><span class="exp-tag">Java</span><span class="exp-tag">Python</span><span class="exp-tag">Web Dev</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <h2 class="sec-heading">Education</h2>
+      <div class="edu-entry">
+        <div class="edu-period">2022 – 2026</div>
+        <div>
+          <div class="edu-degree">Doctor of Philosophy (PhD)</div>
+          <div class="edu-inst">Charles Sturt University · School of Computing · NSW, Australia</div>
+          <div class="edu-thesis">Thesis: Deep Learning for Cattle Identification Using Muzzle Patterns</div>
+        </div>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-period">2017 – 2019</div>
+        <div>
+          <div class="edu-degree">Master of IT — Software Design and Development</div>
+          <div class="edu-inst">Charles Sturt University · School of Computing · NSW, Australia</div>
+          <div class="edu-thesis">Thesis: An Adaptive Synthetic CNN Model to Detect Credit Card Frauds Using Deep Learning</div>
+        </div>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-period">2012 – 2016</div>
+        <div>
+          <div class="edu-degree">Bachelor of Engineering — Information Technology</div>
+          <div class="edu-inst">Pokhara University · School of Computing · Nepal</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHD RESEARCH -->
+    <section id="phd">
+      <h2 class="sec-heading">PhD Research Contributions</h2>
+
+      <div class="phd-card">
+        <div class="phd-card-title">GTE-YOLOv5 — Automated Muzzle Detection</div>
+        <div class="phd-card-sub">Ghost Transformer Encoder · You Only Look Once v5</div>
+        <div class="phd-card-body">Proposed GTE-YOLOv5 integrating <strong>Ghost Convolution</strong> (−19% parameters) and a <strong>Transformer Encoder</strong> for enhanced spatial feature understanding, achieving ~10% accuracy improvement over existing models on CSU farm data. A scalable, efficient solution for livestock biometric identification.</div>
+      </div>
+
+      <div class="phd-card">
+        <div class="phd-card-title">MHAFF — Multi-Head Attention Feature Fusion</div>
+        <div class="phd-card-sub">CNN + Transformer · Adaptive Feature Integration</div>
+        <div class="phd-card-body">Developed MHAFF to adaptively fuse local CNN features and global Transformer features, outperforming traditional fusion methods. Grad-CAM visualisations confirmed accurate highlighting of discriminative muzzle regions, with superior accuracy and generalisation using fewer training epochs.</div>
+      </div>
+
+      <div class="phd-card">
+        <div class="phd-card-title">CoCoMAML — Few-Shot Cattle Identification</div>
+        <div class="phd-card-sub">Cooperative Model-Agnostic Meta-Learning</div>
+        <div class="phd-card-body">Introduced a novel CoCoMAML framework enabling cattle identification from as few as <strong>5 images per animal</strong>. Using MHAFF as the feature extractor, the system adapts rapidly to new cattle identities without extensive retraining — enabling scalable real-world herd management.</div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="sec-heading">Skills</h2>
+      <div class="skills-table">
+        <div class="skill-row"><div class="skill-cat">AI / Deep Learning</div><div class="skill-vals">Machine Learning, Deep Learning, Computer Vision, LLMs, Generative AI</div></div>
+        <div class="skill-row"><div class="skill-cat">Agentic AI</div><div class="skill-vals">LangChain, AutoGen, CrewAI, Semantic Kernel, RAG System Design</div></div>
+        <div class="skill-row"><div class="skill-cat">AI Libraries</div><div class="skill-vals">TensorFlow, PyTorch, OpenCV, Scikit-learn</div></div>
+        <div class="skill-row"><div class="skill-cat">Data Engineering</div><div class="skill-vals">PySpark, Apache Kafka, Airflow, Hadoop, Dask</div></div>
+        <div class="skill-row"><div class="skill-cat">Cloud Platforms</div><div class="skill-vals">AWS, Vertex AI, Google Cloud Platform, Azure</div></div>
+        <div class="skill-row"><div class="skill-cat">Databases</div><div class="skill-vals">MySQL, MongoDB, SQL, NoSQL</div></div>
+        <div class="skill-row"><div class="skill-cat">Programming</div><div class="skill-vals">Python, Java, C, C++, JavaScript, jQuery</div></div>
+        <div class="skill-row"><div class="skill-cat">Data Visualisation</div><div class="skill-vals">Tableau, Matplotlib, Plotly, Seaborn, Vispy, ggplot</div></div>
+        <div class="skill-row"><div class="skill-cat">DevOps / Tools</div><div class="skill-vals">Docker, GitHub, Data Structures &amp; Algorithms</div></div>
+        <div class="skill-row"><div class="skill-cat">Web Development</div><div class="skill-vals">HTML, CSS, JavaScript, jQuery</div></div>
+      </div>
+    </section>
+
+    <!-- AWARDS -->
+    <section id="awards">
+      <h2 class="sec-heading">Honors &amp; Awards</h2>
+      <table class="awards-table">
+        <tr><td class="aw-year">2025</td><td>🏆 <strong>Best Student Paper Award</strong> — AJCAI, Australian National University, Canberra</td><td class="aw-amount">AUD 1,000</td></tr>
+        <tr><td class="aw-year">2025</td><td>Equity Support Grant</td><td class="aw-amount">AUD 1,000</td></tr>
+        <tr><td class="aw-year">2025</td><td>Tri Faculty HDR Support</td><td class="aw-amount">AUD 1,500</td></tr>
+        <tr><td class="aw-year">2025</td><td>AgInnovation Program Grant</td><td class="aw-amount">AUD 1,689</td></tr>
+        <tr><td class="aw-year">2024</td><td>Digital Health Nepal Innovative Research Grant</td><td class="aw-amount">NRs 299,500</td></tr>
+        <tr><td class="aw-year">2023</td><td>Gulbali Accelerated Publication Scheme Grant</td><td class="aw-amount">AUD 8,000</td></tr>
+        <tr><td class="aw-year">2022</td><td>Tri Faculty HDR Support</td><td class="aw-amount">AUD 1,500</td></tr>
+      </table>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="sec-heading">Contact</h2>
+      <p style="font-size:0.92rem;color:#555;margin-bottom:1.2rem;">I am open to research collaborations, industry partnerships, and academic opportunities. Feel free to reach out.</p>
+      <table style="font-size:0.88rem;border-collapse:collapse;">
+        <tr><td style="padding:0.4rem 1.4rem 0.4rem 0;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.08em;vertical-align:top;">Email</td><td><a href="/cdn-cgi/l/email-protection#d9bdacb5b8b5b8adb6b499beb4b8b0b5f7bab6b4"><span class="__cf_email__" data-cfemail="2743524b464b4653484a67404a464e4b0944484a">[email&#160;protected]</span></a></td></tr>
+        <tr><td style="padding:0.4rem 1.4rem 0.4rem 0;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.08em;vertical-align:top;">Phone</td><td>0450 399 072</td></tr>
+        <tr><td style="padding:0.4rem 1.4rem 0.4rem 0;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.08em;vertical-align:top;">Location</td><td>Wagga Wagga, NSW 2650, Australia</td></tr>
+        <tr><td style="padding:0.4rem 1.4rem 0.4rem 0;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.08em;vertical-align:top;">Supervisor</td><td>Professor Lihong Zheng — <a href="/cdn-cgi/l/email-protection#25495f4d404b42654656500b4041500b4450"><span class="__cf_email__" data-cfemail="365a4c5e5358517655454318535243185743">[email&#160;protected]</span></a></td></tr>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Rabin Dulal &nbsp;·&nbsp; Charles Sturt University &nbsp;·&nbsp; Wagga Wagga, NSW, Australia</p>
+  <p style="margin-top:0.4rem;opacity:0.5;">© 2025 &nbsp;·&nbsp; Built with HTML/CSS &nbsp;·&nbsp; Hosted on GitHub Pages</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function filterPubs(type, btn) {
+    document.querySelectorAll('.filt-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.pub-entry').forEach(el => {
+      if (type === 'all' || el.dataset.type === type) {
+        el.classList.remove('hidden');
+      } else
